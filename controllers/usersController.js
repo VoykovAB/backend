@@ -1,28 +1,53 @@
 const UserService = require('../services/UserService');
 
 class UsersController {
-    static onResponse(err, result, res) {
-        if (err) {
-            return res.status(500).json({error: err});
-        }
 
-        return res.status(200).json(result);
+    /**
+     * Return users list
+     *
+     * @param req
+     * @param res
+     */
+    static getList(req, res) {
+        UserService.getList()
+            .then((result) => res.status(200).json(result))
+            .catch((error) => res.status(500).json({error}));
     }
 
-    static getUsers(req, res) {
-        UserService.getUsers((err, result) => this.onResponse(err, result, res));
+    /**
+     * Create new user
+     *
+     * @param req
+     * @param res
+     */
+    static create(req, res) {
+        UserService.create(req.body)
+            .then((result) => res.status(200).json(result))
+            .catch((error) => res.status(500).json({error}));
     }
 
-    static createUser(req, res) {
-        UserService.createUser(req.body, (err, result) => this.onResponse(err, result, res));
+    /**
+     * Udpate user data
+     *
+     * @param req
+     * @param res
+     */
+    static update(req, res) {
+        UserService.update(req.body)
+            .then((result) => res.status(200).json(result))
+            .catch((error) => res.status(500).json({error}));
     }
 
-    static updateUser(req, res) {
-        UserService.updateUser(req.body, (err, result) => this.onResponse(err, result, res));
-    }
-
-    static destroyUser(req, res) {
-        UserService.destroyUser(req.body, (err, result) => this.onResponse(err, result, res));
+    /**
+     * Delete user from db
+     *
+     * @param req
+     * @param res
+     */
+    static remove(req, res) {
+        UserService.remove(req.body)
+            .then((result) => res.status(200).json(result))
+            .catch((error) => res.status(500).json({error}));
     }
 }
 

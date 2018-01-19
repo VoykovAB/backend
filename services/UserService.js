@@ -1,21 +1,45 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('users');
+const User = mongoose.model('User');
 
 class UserServices {
-    static createUser(data, callback) {
-        (new User(data)).save((err, res) => callback(err, res)) ;
+
+    /**
+     * Create user
+     *
+     * @param data
+     * @return {Promise}
+     */
+    static create(data) {
+        return (new User(data)).save();
     }
 
-    static getUsers(callback) {
-        User.find({}).exec((err, res) => callback(err, res));
+    /**
+     * Get users list
+     *
+     * @return {Promise}
+     */
+    static getList() {
+        return User.find({}).exec();
     }
 
-    static updateUser(data, callback) {
-        User.update({_id: data['_id']}, data, (err, res) => callback(err, res));
+    /**
+     * Update user
+     *
+     * @param data
+     * @return {Promise}
+     */
+    static update(data) {
+        return User.update({_id: data['_id']}, data);
     }
 
-    static destroyUser(data, callback) {
-        User.deleteOne(data, (err, res) => callback(err, res));
+    /**
+     * Delete user
+     *
+     * @param data
+     * @return {Promise}
+     */
+    static remove(data) {
+        return User.deleteOne(data);
     }
 }
 
