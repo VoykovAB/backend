@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 // DB connect and make models
-mongoose.connect(config.db);
+mongoose.connect('mongodb://' + config.db);
 fs.readdirSync(__dirname + '/models').forEach(function (model) {
     require(__dirname + '/models/' + model)
 });
