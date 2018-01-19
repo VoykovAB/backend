@@ -1,0 +1,6 @@
+{
+  "http": {
+    "port": 80
+  },
+  "db": "mongodb://89a5bb53b418774688acc769e73dc55a@6a.mongo.evennode.com:27017,6b.mongo.evennode.com:27017/89a5bb53b418774688acc769e73dc55a?replicaSet=eu-6"
+}
