@@ -28,8 +28,8 @@ class UserServices {
      * @param data
      * @return {Promise}
      */
-    static update(data) {
-        return User.update({_id: data['_id']}, data);
+    static update(id, data) {
+        return User.update({_id: id}, data);
     }
 
     /**
@@ -38,8 +38,8 @@ class UserServices {
      * @param data
      * @return {Promise}
      */
-    static remove(data) {
-        return User.deleteOne(data);
+    static remove(id) {
+        return User.deleteOne({_id: id});
     }
 }
 

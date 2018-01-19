@@ -33,7 +33,7 @@ class UsersController {
      * @param res
      */
     static update(req, res) {
-        UserService.update(req.body)
+        UserService.update(req.params.id, req.body)
             .then((result) => res.status(200).json(result))
             .catch((error) => res.status(500).json({error}));
     }
@@ -45,7 +45,7 @@ class UsersController {
      * @param res
      */
     static remove(req, res) {
-        UserService.remove(req.body)
+        UserService.remove(req.params.id)
             .then((result) => res.status(200).json(result))
             .catch((error) => res.status(500).json({error}));
     }
